@@ -10,7 +10,7 @@ namespace Internship_project
         {
             InitializeComponent();
 
-            MainPage = new MainPage();
+            MainPage = new View.SignInView();
         }
 
         protected override void OnStart()
