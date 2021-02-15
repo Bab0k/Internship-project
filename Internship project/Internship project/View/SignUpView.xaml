@@ -1,11 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-    
+
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Internship_project.View.SignInView">
+             x:Class="Internship_project.View.SignUpView">
     <NavigationPage.TitleView>
         <StackLayout Orientation="Horizontal" VerticalOptions="Center" >
-            <Label Text="Users SignIn" FontAttributes="Bold" FontSize="Medium" />
+            <Label Text="Users SignUp" FontAttributes="Bold" FontSize="Medium" />
         </StackLayout>
     </NavigationPage.TitleView>
 
@@ -17,26 +17,12 @@
             <Entry Placeholder="Password" IsPassword="true" TextChanged="Entry_TextChanged" x:Name="UserPassword"
                    VerticalOptions="StartAndExpand" WidthRequest="250"
                 HorizontalOptions="CenterAndExpand" />
-            <Button Text="Sign In"  Clicked="Button_Clicked" x:Name="SignIn" 
+            <Entry Placeholder="Password" IsPassword="true" TextChanged="Entry_TextChanged" x:Name="ConfirmUserPassword"
+                   VerticalOptions="StartAndExpand" WidthRequest="250"
+                HorizontalOptions="CenterAndExpand" />
+            <Button Text="Sign Up"  Clicked="Button_Clicked" x:Name="SignUp" 
                     HorizontalOptions="CenterAndExpand" WidthRequest="250"
                     VerticalOptions="EndAndExpand"/>
-            <Label HorizontalOptions="CenterAndExpand"
-                   VerticalOptions="StartAndExpand"
-    LineBreakMode="WordWrap">
-                <Label.FormattedText>
-                    <FormattedString>
-                        <Span 
-                            Text="SIGN UP" 
-                            TextColor="Blue"
-                            TextDecorations="Underline" >
-                            <Span.GestureRecognizers>
-                                <TapGestureRecognizer Command="{Binding ToSignUp}" />
-                            </Span.GestureRecognizers>
-                        </Span>
-                    </FormattedString>
-                </Label.FormattedText>
-                
-            </Label>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
