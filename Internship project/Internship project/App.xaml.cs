@@ -1,28 +1,33 @@
-﻿using System;
+﻿using Prism;
+using Prism.Unity;
+using Prism.Modularity;
+using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using Prism.Ioc;
+using Prism.Navigation;
+using Internship_project.View;
+using Internship_project.ViewModel;
 
 namespace Internship_project
 {
-    public partial class App : Application
+    public partial class App : PrismApplication
     {
-        public App()
+        public App(IPlatformInitializer initializer = null): base(initializer) { }
+
+        protected override void OnInitialized()
         {
             InitializeComponent();
 
-            MainPage = new NavigationPage(new View.SignInView());
+            NavigationService.NavigateAsync("NavigationPage/SignInView");
+
         }
 
-        protected override void OnStart()
+        protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
-        }
-
-        protected override void OnSleep()
-        {
-        }
-
-        protected override void OnResume()
-        {
+            containerRegistry.RegisterForNavigation<NavigationPage>();
+            containerRegistry.RegisterForNavigation<SignInView, SignInViewModel>();
+            containerRegistry.RegisterForNavigation<SignUpView, SignUpViewModel>();
         }
     }
 }

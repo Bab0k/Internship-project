@@ -2,27 +2,23 @@
 
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Internship_project.View.SignUpView">
-    <NavigationPage.TitleView>
-        <StackLayout Orientation="Horizontal" VerticalOptions="Center" >
-            <Label Text="Users SignUp" FontAttributes="Bold" FontSize="Medium" />
-        </StackLayout>
-    </NavigationPage.TitleView>
+             x:Class="Internship_project.View.SignUpView"
+             Title="{Binding Title}">
 
     <ContentPage.Content>
         <StackLayout>
-            <Entry Placeholder="Login" TextChanged="Entry_TextChanged" x:Name="UserLogin"
+            <Entry Placeholder="Login" x:Name="UserLogin"
                    VerticalOptions="EndAndExpand" WidthRequest="250"
                 HorizontalOptions="CenterAndExpand" />
-            <Entry Placeholder="Password" IsPassword="true" TextChanged="Entry_TextChanged" x:Name="UserPassword"
+            <Entry Placeholder="Password" IsPassword="true" x:Name="UserPassword"
+                   WidthRequest="250"
+                HorizontalOptions="CenterAndExpand" />
+            <Entry Placeholder="Confirm password" IsPassword="true" x:Name="ConfirmUserPassword"
                    VerticalOptions="StartAndExpand" WidthRequest="250"
                 HorizontalOptions="CenterAndExpand" />
-            <Entry Placeholder="Password" IsPassword="true" TextChanged="Entry_TextChanged" x:Name="ConfirmUserPassword"
-                   VerticalOptions="StartAndExpand" WidthRequest="250"
-                HorizontalOptions="CenterAndExpand" />
-            <Button Text="Sign Up"  Clicked="Button_Clicked" x:Name="SignUp" 
+            <Button Text="Sign Up" x:Name="SignUp"  Clicked="SignUp_Clicked_1"
                     HorizontalOptions="CenterAndExpand" WidthRequest="250"
-                    VerticalOptions="EndAndExpand"/>
+                    VerticalOptions="StartAndExpand"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

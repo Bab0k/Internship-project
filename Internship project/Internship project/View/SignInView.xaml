@@ -2,13 +2,9 @@
     
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Internship_project.View.SignInView">
-    <NavigationPage.TitleView>
-        <StackLayout Orientation="Horizontal" VerticalOptions="Center" >
-            <Label Text="Users SignIn" FontAttributes="Bold" FontSize="Medium" />
-        </StackLayout>
-    </NavigationPage.TitleView>
-
+             x:Class="Internship_project.View.SignInView"
+             Title="{Binding Title}">
+    
     <ContentPage.Content>
         <StackLayout>
             <Entry Placeholder="Login" TextChanged="Entry_TextChanged" x:Name="UserLogin"
@@ -17,12 +13,13 @@
             <Entry Placeholder="Password" IsPassword="true" TextChanged="Entry_TextChanged" x:Name="UserPassword"
                    VerticalOptions="StartAndExpand" WidthRequest="250"
                 HorizontalOptions="CenterAndExpand" />
-            <Button Text="Sign In"  Clicked="Button_Clicked" x:Name="SignIn" 
+            <Button Text="Sign In"  Command="{Binding NavigationCommand}" x:Name="SignIn" 
                     HorizontalOptions="CenterAndExpand" WidthRequest="250"
                     VerticalOptions="EndAndExpand"/>
+            
+            
             <Label HorizontalOptions="CenterAndExpand"
-                   VerticalOptions="StartAndExpand"
-    LineBreakMode="WordWrap">
+                   VerticalOptions="StartAndExpand" LineBreakMode="WordWrap">
                 <Label.FormattedText>
                     <FormattedString>
                         <Span 
@@ -30,7 +27,7 @@
                             TextColor="Blue"
                             TextDecorations="Underline" >
                             <Span.GestureRecognizers>
-                                <TapGestureRecognizer Command="{Binding ToSignUp}" />
+                                <TapGestureRecognizer Command="{Binding NavigationCommand}" />
                             </Span.GestureRecognizers>
                         </Span>
                     </FormattedString>

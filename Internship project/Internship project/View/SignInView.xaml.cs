@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using System.Windows.Input;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using Prism;
+using Prism.Navigation;
 
 namespace Internship_project.View
 {
@@ -16,18 +18,6 @@ namespace Internship_project.View
         {
             InitializeComponent();
             SignIn.IsEnabled = false;
-        }
-
-        private void Button_Clicked(object sender, EventArgs e)
-        {
-
-            if (true)//Проверка данных
-            {
-                Navigation.PushAsync(new View.SignUpView());
-            }
-
-
-
         }
 
         private void Entry_TextChanged(object sender, TextChangedEventArgs e)
@@ -48,9 +38,5 @@ namespace Internship_project.View
 
         }
 
-        private void ToSignUp()
-        {
-
-        }
     }
 }
