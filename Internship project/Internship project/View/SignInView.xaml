@@ -13,7 +13,7 @@
             <Entry Placeholder="Password" IsPassword="true" TextChanged="Entry_TextChanged" x:Name="UserPassword"
                    VerticalOptions="StartAndExpand" WidthRequest="250"
                 HorizontalOptions="CenterAndExpand" />
-            <Button Text="Sign In"  Command="{Binding}" x:Name="SignIn" 
+            <Button Text="Sign In"  Command="{Binding}" x:Name="SignIn" Clicked="SignIn_Clicked"
                     HorizontalOptions="CenterAndExpand" WidthRequest="250"
                     VerticalOptions="EndAndExpand"/>
             
@@ -27,7 +27,7 @@
                             TextColor="Blue"
                             TextDecorations="Underline" >
                             <Span.GestureRecognizers>
-                                <TapGestureRecognizer Command="{Binding NavigationToSignUpView}" />
+                                <TapGestureRecognizer Command="{Binding SignUpViewNavigatioCommand}" />
                             </Span.GestureRecognizers>
                         </Span>
                     </FormattedString>

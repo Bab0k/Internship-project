@@ -7,16 +7,16 @@
 
     <ContentPage.Content>
         <StackLayout>
-            <Entry Placeholder="Login" x:Name="UserLogin" Text="{Binding Login}"
+            <Entry Placeholder="Login" x:Name="UserLogin" Text="{Binding Login}" TextChanged="UserLogin_TextChanged"
                    VerticalOptions="EndAndExpand" WidthRequest="250"
                 HorizontalOptions="CenterAndExpand" />
-            <Entry Placeholder="Password" IsPassword="true" x:Name="UserPassword" Text="{Binding Password}"
+            <Entry Placeholder="Password" IsPassword="true" x:Name="UserPassword" Text="{Binding Password}" TextChanged="UserLogin_TextChanged"
                    WidthRequest="250"
                 HorizontalOptions="CenterAndExpand" />
-            <Entry Placeholder="Confirm password" IsPassword="true" x:Name="ConfirmUserPassword" Text="{Binding ConfirmUserPassword}"
+            <Entry Placeholder="Confirm password" IsPassword="true" x:Name="ConfirmUserPassword" Text="{Binding ConfirmUserPassword}" TextChanged="UserLogin_TextChanged"
                    VerticalOptions="StartAndExpand" WidthRequest="250"
                 HorizontalOptions="CenterAndExpand" />
-            <Button Text="Sign Up" x:Name="SignUp" Command="{Binding NavigationCommand}"
+            <Button Text="Sign Up" x:Name="SignUp" Clicked="SignUp_Clicked"
                     HorizontalOptions="CenterAndExpand" WidthRequest="250"
                     VerticalOptions="StartAndExpand"/>
         </StackLayout>

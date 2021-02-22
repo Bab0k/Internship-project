@@ -8,6 +8,9 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using Prism;
 using Prism.Navigation;
+using Realms;
+using Internship_project.ViewModel;
+using Internship_project.Model.Tables;
 
 namespace Internship_project.View
 {
@@ -38,5 +41,33 @@ namespace Internship_project.View
 
         }
 
+        private void SignIn_Clicked(object sender, EventArgs e)
+        {
+            SignInViewModel model = BindingContext as SignInViewModel;
+
+            Realm _realm = Realm.GetInstance();
+
+            var Users = _realm.All<User>();
+
+            if (CheckValidation(Users))
+            {
+                model.MainListViewNavigationCommand.Execute();
+            }
+
+
+        }
+
+        private bool CheckValidation(IQueryable<User> users)
+        {
+            SignInViewModel model = BindingContext as SignInViewModel;
+
+            if (users.Where(u => u.Login == model.Login && u.Password == model.Password).Any())
+            {
+                DisplayAlert("Error", "Missing login or password", "Cancel");
+
+                return false;
+            }
+            return true;
+        }
     }
 }

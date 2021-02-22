@@ -8,7 +8,6 @@ namespace Internship_project.View
     public partial class ProfileView : ContentPage
     {
 
-        private ProfileRepository database;
         public ProfileView()
         {
             InitializeComponent();

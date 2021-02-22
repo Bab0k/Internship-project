@@ -9,11 +9,8 @@ namespace Internship_project.ViewModel
         private DelegateCommand _navigationcommand;
 
         string login = string.Empty;
-
         public string Login
         {
-
-
             get => login;
             set
             {
@@ -27,26 +24,36 @@ namespace Internship_project.ViewModel
                 OnPropertyChanged(new PropertyChangedEventArgs(nameof(Login)));
             }
         }
-        string Password
+
+        string password = string.Empty;
+        public string Password
         {
-            get  => Password;
+            get  => password;
             set
-            { 
-                Password = value;
+            {
+                if (password == value)
+                {
+                    return;
+                }   
+                password = value;
                 OnPropertyChanged(new PropertyChangedEventArgs(nameof(Password)));
             }
         }
-        string ConfirmUserPassword
+
+        string confirmUserPassword = string.Empty;
+        public string ConfirmUserPassword
         {
-            get => ConfirmUserPassword;
+            get => confirmUserPassword;
             set
-            { 
-                ConfirmUserPassword = value;
+            {
+                if (confirmUserPassword == value)
+                {
+                    return;
+                }
+                confirmUserPassword = value;
                 OnPropertyChanged(new PropertyChangedEventArgs(nameof(ConfirmUserPassword)));
             }
         }
-
-
         public SignUpViewModel(INavigationService navigationService) : base(navigationService)
         {
             Title = "SignUp";
@@ -61,7 +68,6 @@ namespace Internship_project.ViewModel
             var param = new NavigationParameters();
 
             param.Add("Login", Login);
-
 
             NavigationService.NavigateAsync("MainListView");
 

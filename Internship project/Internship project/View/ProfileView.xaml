@@ -11,11 +11,11 @@
     </ContentPage.ToolbarItems>
     <StackLayout Spacing="20" Padding="20">
         <Image Source="pic_profile.png" WidthRequest="200" VerticalOptions="Start"/>
-        <Entry WidthRequest="300" Placeholder="NickName" 
+        <Entry WidthRequest="300" Placeholder="NickName" Text="{Binding NickName}"
                HorizontalOptions="CenterAndExpand"/>
-        <Entry WidthRequest="300" Placeholder="Name"
+        <Entry WidthRequest="300" Placeholder="Name" Text="{Binding Name}"
                HorizontalOptions="CenterAndExpand"/>
-        <Editor WidthRequest="300" HeightRequest="200" BackgroundColor="Gray" Placeholder="Description" 
+        <Editor WidthRequest="300" HeightRequest="200" BackgroundColor="Gray" Placeholder="Description" Text="{Binding Description}" 
                 HorizontalOptions="CenterAndExpand"/>
 
     </StackLayout>
