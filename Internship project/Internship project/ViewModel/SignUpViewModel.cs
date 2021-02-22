@@ -1,22 +1,29 @@
 ﻿using Prism.Commands;
-using Prism.Mvvm;
 using Prism.Navigation;
-using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
 
 namespace Internship_project.ViewModel
 {
     public class SignUpViewModel : BindableBase, INotifyPropertyChanged
     {
         private DelegateCommand _navigationcommand;
-        string Login
+
+        string login = string.Empty;
+
+        public string Login
         {
-            get => Login;
+
+
+            get => login;
             set
             {
-                Login = value;
+                if (login == value)
+                {
+                    return;
+                }
+
+                login = value;
+
                 OnPropertyChanged(new PropertyChangedEventArgs(nameof(Login)));
             }
         }

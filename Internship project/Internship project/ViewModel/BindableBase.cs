@@ -21,6 +21,11 @@ namespace Internship_project.ViewModel
             set { SetProperty(ref _title, value); }
         }
 
+        protected override void OnPropertyChanged(PropertyChangedEventArgs args)
+        {
+            propertyChanged?.Invoke(this, args);
+        }
+
         public BindableBase(INavigationService navigationService)
         {
             NavigationService = navigationService;

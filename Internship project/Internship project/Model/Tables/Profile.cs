@@ -16,7 +16,7 @@ namespace Internship_project.Model.Tables
         public string NickName { get; set; }
         public string Description { get; set; }
         public byte[] File { get; set; }
-        public DateTime Date { get; set; }
+        public string Date { get; set; }
     }
 
 }
