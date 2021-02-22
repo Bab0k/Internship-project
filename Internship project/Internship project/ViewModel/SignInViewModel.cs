@@ -9,22 +9,20 @@ namespace Internship_project.ViewModel
 {
     public class SignInViewModel: BindableBase
     {
-        private readonly INavigationService navigationService;
         private DelegateCommand _navigationcommand;
 
         public SignInViewModel(INavigationService navigationService) : base(navigationService)
         {
             Title = "SignIn";
-            this.navigationService = navigationService;
         }
 
 
-        public DelegateCommand NavigationCommand =>
+        public DelegateCommand NavigationToSignUpView =>
             _navigationcommand ?? (_navigationcommand = new DelegateCommand(ExecuteNavigatioCommand));
 
         private void ExecuteNavigatioCommand()
         {
-            navigationService.NavigateAsync("SignUpView");
+            NavigationService.NavigateAsync("SignUpView");
         }
 
     }

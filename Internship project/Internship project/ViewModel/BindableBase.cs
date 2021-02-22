@@ -3,6 +3,7 @@ using Prism.Mvvm;
 using Prism.Navigation;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Text;
 
 namespace Internship_project.ViewModel
@@ -10,6 +11,7 @@ namespace Internship_project.ViewModel
     public class BindableBase : Prism.Mvvm.BindableBase, INavigationAware, IDestructible
     {
 
+        public PropertyChangedEventHandler propertyChanged;
 
         protected INavigationService NavigationService { get; private set; }
         private string _title;
@@ -18,7 +20,6 @@ namespace Internship_project.ViewModel
             get { return _title; }
             set { SetProperty(ref _title, value); }
         }
-
 
         public BindableBase(INavigationService navigationService)
         {

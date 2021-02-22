@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="http://prismlibrary.com"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="Internship_project.View.ProfileView"
+             Title="{Binding Title}">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem IconImageSource="ic_save3x.png"/>
+
+    </ContentPage.ToolbarItems>
+    <StackLayout Spacing="20" Padding="20">
+        <Image Source="pic_profile.png" WidthRequest="200" VerticalOptions="Start"/>
+        <Entry WidthRequest="300" Placeholder="NickName" 
+               HorizontalOptions="CenterAndExpand"/>
+        <Entry WidthRequest="300" Placeholder="Name"
+               HorizontalOptions="CenterAndExpand"/>
+        <Editor WidthRequest="300" HeightRequest="200" BackgroundColor="Gray" Placeholder="Description" 
+                HorizontalOptions="CenterAndExpand"/>
+
+    </StackLayout>
+</ContentPage>

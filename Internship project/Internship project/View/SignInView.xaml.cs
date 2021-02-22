@@ -25,16 +25,16 @@ namespace Internship_project.View
 
             string numbers = "1234567890";
 
-            if (numbers.Contains(UserLogin.Text.FirstOrDefault()))
+            if (!string.IsNullOrEmpty(UserLogin.Text))
             {
-                UserLogin.Text = "";
-                return;
+                if (numbers.Contains(UserLogin.Text.First()))
+                {
+                    UserLogin.Text = string.Empty;
+                    return;
+                }
             }
 
-            if (!string.IsNullOrEmpty(UserLogin.Text) && !string.IsNullOrEmpty(UserPassword.Text))
-            {
-                SignIn.IsEnabled = true;
-            }
+            SignIn.IsEnabled = !string.IsNullOrEmpty(UserLogin.Text) && !string.IsNullOrEmpty(UserPassword.Text);
 
         }
 

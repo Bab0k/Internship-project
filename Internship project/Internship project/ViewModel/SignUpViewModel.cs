@@ -3,19 +3,46 @@ using Prism.Mvvm;
 using Prism.Navigation;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 
 namespace Internship_project.ViewModel
 {
-    public class SignUpViewModel : BindableBase
+    public class SignUpViewModel : BindableBase, INotifyPropertyChanged
     {
-        private readonly INavigationService navigationService;
         private DelegateCommand _navigationcommand;
+        string Login
+        {
+            get => Login;
+            set
+            {
+                Login = value;
+                OnPropertyChanged(new PropertyChangedEventArgs(nameof(Login)));
+            }
+        }
+        string Password
+        {
+            get  => Password;
+            set
+            { 
+                Password = value;
+                OnPropertyChanged(new PropertyChangedEventArgs(nameof(Password)));
+            }
+        }
+        string ConfirmUserPassword
+        {
+            get => ConfirmUserPassword;
+            set
+            { 
+                ConfirmUserPassword = value;
+                OnPropertyChanged(new PropertyChangedEventArgs(nameof(ConfirmUserPassword)));
+            }
+        }
+
 
         public SignUpViewModel(INavigationService navigationService) : base(navigationService)
         {
             Title = "SignUp";
-            this.navigationService = navigationService;
         }
 
 
@@ -24,6 +51,12 @@ namespace Internship_project.ViewModel
 
         private void ExecuteNavigatioCommand()
         {
+            var param = new NavigationParameters();
+
+            param.Add("Login", Login);
+
+
+            NavigationService.NavigateAsync("MainListView");
 
         }
 

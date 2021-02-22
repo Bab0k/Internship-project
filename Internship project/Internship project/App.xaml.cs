@@ -19,6 +19,8 @@ namespace Internship_project
         {
             InitializeComponent();
 
+            
+
             NavigationService.NavigateAsync("NavigationPage/SignInView");
 
         }
@@ -28,6 +30,9 @@ namespace Internship_project
             containerRegistry.RegisterForNavigation<NavigationPage>();
             containerRegistry.RegisterForNavigation<SignInView, SignInViewModel>();
             containerRegistry.RegisterForNavigation<SignUpView, SignUpViewModel>();
+            containerRegistry.RegisterForNavigation<ProfileView, ProfileViewModel>();
+            containerRegistry.RegisterForNavigation<MainListView, MainListViewModel>();
+
         }
     }
 }

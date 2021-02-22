@@ -11,7 +11,6 @@ namespace Internship_project.View
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class SignUpView : ContentPage
     {
-        public Command SignUp_Clicked { get; }
 
         public SignUpView()
         {
@@ -21,12 +20,8 @@ namespace Internship_project.View
 
         private bool CheckLogin()
         {
+
             return true;
-        }
-
-        private void SignUp_Clicked_1(object sender, EventArgs e)
-        {
-
 
         }
     }
