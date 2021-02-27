@@ -8,7 +8,7 @@ using System.Text;
 
 namespace Internship_project.ViewModel
 {
-    public class BindableBase : Prism.Mvvm.BindableBase, INavigationAware, IDestructible
+    public class ViewModelBase : BindableBase, INavigationAware, IDestructible
     {
 
         public PropertyChangedEventHandler propertyChanged;
@@ -26,7 +26,7 @@ namespace Internship_project.ViewModel
             propertyChanged?.Invoke(this, args);
         }
 
-        public BindableBase(INavigationService navigationService)
+        public ViewModelBase(INavigationService navigationService)
         {
             NavigationService = navigationService;
         }

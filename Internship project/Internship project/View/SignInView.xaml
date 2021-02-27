@@ -7,10 +7,10 @@
     
     <ContentPage.Content>
         <StackLayout>
-            <Entry Placeholder="Login" TextChanged="Entry_TextChanged" x:Name="UserLogin"
+            <Entry Placeholder="Login" TextChanged="UserLogin_TextChanged"
                    VerticalOptions="EndAndExpand" WidthRequest="250"
                 HorizontalOptions="CenterAndExpand" />
-            <Entry Placeholder="Password" IsPassword="true" TextChanged="Entry_TextChanged" x:Name="UserPassword"
+            <Entry Placeholder="Password" IsPassword="true" TextChanged="UserLogin_TextChanged"
                    VerticalOptions="StartAndExpand" WidthRequest="250"
                 HorizontalOptions="CenterAndExpand" />
             <Button Text="Sign In"  Command="{Binding}" x:Name="SignIn" Clicked="SignIn_Clicked"

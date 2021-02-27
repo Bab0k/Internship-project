@@ -9,7 +9,7 @@ using Xamarin.Forms;
 
 namespace Internship_project.ViewModel
 {
-    public class ProfileViewModel : BindableBase
+    public class ProfileViewModel : ViewModelBase
     {
         string Photo = "pic_profile.png";
 
@@ -47,7 +47,6 @@ namespace Internship_project.ViewModel
             }
         }
 
-
         string description = string.Empty;
         public string Description
         {
@@ -64,8 +63,6 @@ namespace Internship_project.ViewModel
                 OnPropertyChanged(new PropertyChangedEventArgs(nameof(Description)));
             }
         }
-
-
 
         public ProfileViewModel(INavigationService navigationService) : base(navigationService)
         {

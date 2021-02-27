@@ -7,7 +7,7 @@ using System.Linq;
 
 namespace Internship_project.ViewModel
 {
-    public class MainListViewModel : BindableBase
+    public class MainListViewModel : ViewModelBase
     {
         public MainListViewModel(INavigationService navigationService) : base(navigationService)
         {
