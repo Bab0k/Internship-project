@@ -4,14 +4,31 @@ using Prism.Navigation;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.IO;
 using System.Linq;
 using Xamarin.Forms;
 
 namespace Internship_project.ViewModel
 {
-    public class ProfileViewModel : ViewModelBase
+    public class ProfileViewModel : ViewModelBase, INavigatedAware
     {
-        string Photo = "pic_profile.png";
+        ImageSource _Photo = ImageSource.FromUri(new Uri("pic_profile.png"));
+        public ImageSource Photo
+        {
+            get => _Photo;
+            set
+            {
+                if (_Photo == value)
+                {
+                    return;
+                }
+
+                _Photo = value;
+
+                OnPropertyChanged(new PropertyChangedEventArgs(nameof(Photo)));
+            }
+        }
+
 
         string name = string.Empty;
         public string Name
@@ -64,9 +81,21 @@ namespace Internship_project.ViewModel
             }
         }
 
+        private string UserId;
+
         public ProfileViewModel(INavigationService navigationService) : base(navigationService)
         {
             Title = "Profile";
+        }
+
+
+        public void OnNavigatedFrom(INavigationParameters parameters)
+        {
+        }
+
+        public void OnNavigatedTo(INavigationParameters parameters)
+        {
+            UserId = parameters.GetValue<string>("UserId");
         }
     }
 }

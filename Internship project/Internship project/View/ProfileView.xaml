@@ -10,7 +10,7 @@
 
     </ContentPage.ToolbarItems>
     <StackLayout Spacing="20" Padding="20">
-        <Image Source="pic_profile.png" WidthRequest="200" VerticalOptions="Start"/>
+        <Image Source="{Binding Photo}" WidthRequest="200" VerticalOptions="Start"/>
         <Entry WidthRequest="300" Placeholder="NickName" Text="{Binding NickName}"
                HorizontalOptions="CenterAndExpand"/>
         <Entry WidthRequest="300" Placeholder="Name" Text="{Binding Name}"

@@ -8,7 +8,7 @@ using System.Text;
 
 namespace Internship_project.ViewModel
 {
-    public class ViewModelBase : BindableBase, INavigationAware, IDestructible
+    public class ViewModelBase : BindableBase, IDestructible
     {
 
         public PropertyChangedEventHandler propertyChanged;
@@ -32,14 +32,6 @@ namespace Internship_project.ViewModel
         }
 
         public void Destroy()
-        {
-        }
-
-        public void OnNavigatedFrom(INavigationParameters parameters)
-        {
-        }
-
-        public void OnNavigatedTo(INavigationParameters parameters)
         {
         }
     }

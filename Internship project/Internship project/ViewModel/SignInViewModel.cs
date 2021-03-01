@@ -88,7 +88,7 @@ namespace Internship_project.ViewModel
 
             param.Add("Login", Login);
 
-            NavigationService.NavigateAsync(nameof(MainListView));
+            NavigationService.NavigateAsync(nameof(MainListView), param);
 
         }
 
