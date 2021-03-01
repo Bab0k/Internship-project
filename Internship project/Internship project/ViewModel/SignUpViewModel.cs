@@ -99,14 +99,14 @@ namespace Internship_project.ViewModel
 
                 return false;
             }
-            if (Validation.Validation.IsLogin(Login))
+            if (!Validation.Validation.IsLogin(Login))
             {
                 Application.Current.MainPage.DisplayAlert("Error", "Login be at least 4 and no more then 16 " +
                     "and starting at letter", "Cancel");
                 return false;
 
             }
-            if (Validation.Validation.IsPassword(Password))
+            if (!Validation.Validation.IsPassword(Password))
             {
                 Application.Current.MainPage.DisplayAlert("Error", "Password be at least 4 and no more then 16" +
                     "and must contain at least one uppercase letter," +

@@ -17,10 +17,7 @@ namespace Internship_project.Validation
 
         public static bool IsLogin(string text)
         {
-            return IsValidation(text, uppercase)
-                && IsValidation(text, lovercase)
-                && IsValidation(text, number)
-                && IsValidation(text, loginlen)
+            return IsValidation(text, loginlen)
                 && IsValidation(text, start);
         }
         public static bool IsPassword(string text)
@@ -34,7 +31,9 @@ namespace Internship_project.Validation
 
         public static bool IsValidation(string text, string pattern)
         {
-            return Regex.IsMatch(text, pattern);
+            var bll = Regex.IsMatch(text, pattern);
+            return bll;
+
         }
     }
 

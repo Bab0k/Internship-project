@@ -3,37 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:prism="http://prismlibrary.com"
              prism:ViewModelLocator.AutowireViewModel="True"
-             x:Class="Internship_project.View.MainListView">
-    
-        <Grid Padding="20" ColumnSpacing="20">
-            
-            
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-        </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-            </Grid.RowDefinitions>
-            
-                <Label Text="Name" Grid.Column="1" Grid.Row="0" VerticalOptions="Start"  Margin="10"/>
-                <Label Text="NickName" Grid.Column="1" Grid.Row="0" VerticalOptions="Center" Margin="10"/>
-                <Label Text="Date" Grid.Column="1" Grid.Row="0" VerticalOptions="End" Margin="10"/>
-                <Image Source="pic_profile" Grid.Column="0" Grid.Row="0" VerticalOptions="Start"/>
-
-
-        <Label Text="Name" Grid.Column="1" Grid.Row="1" VerticalOptions="Start"/>
-        <Label Text="NickName" Grid.Column="1" Grid.Row="1" VerticalOptions="Center"/>
-        <Label Text="Date" Grid.Column="1" Grid.Row="1" VerticalOptions="End"/>
-        <Image Source="pic_profile" Grid.Column="0" Grid.Row="1" VerticalOptions="Start"/>
-
-    </Grid>
-    
-    
+             x:Class="Internship_project.View.MainListView"
+             Title="{Binding Title}"
+             Content="{Binding GridContent}">
     
 </ContentPage>

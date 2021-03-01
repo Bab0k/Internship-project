@@ -72,11 +72,12 @@ namespace Internship_project.ViewModel
         {
             if (users.Where(u => u.Login == Login && u.Password == Password).Any())
             {
-                Application.Current.MainPage.DisplayAlert("Error", "Missing login or password", "Cancel");
-
-                return false;
+                return true;
             }
-            return true;
+            Application.Current.MainPage.DisplayAlert("Error", "Missing login or password", "Cancel");
+
+            return false;
+
         }
 
         public DelegateCommand MainListViewNavigationCommand =>
@@ -98,7 +99,7 @@ namespace Internship_project.ViewModel
             NavigationService.NavigateAsync(nameof(SignUpView));
         }
 
-        public DelegateCommand CheckSignUp =>
+        public DelegateCommand CheckSignIn =>
             new DelegateCommand(SignIn_Clicked);
     }
 }

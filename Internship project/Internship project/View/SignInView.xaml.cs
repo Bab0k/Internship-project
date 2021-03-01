@@ -24,7 +24,7 @@ namespace Internship_project.View
         }
         private void UserLogin_TextChanged(object sender, TextChangedEventArgs e)
         {
-            SignIn.IsEnabled = (BindingContext as SignUpViewModel).UserLogin_TextChanged(sender, e);
+            SignIn.IsEnabled = (BindingContext as SignInViewModel).UserLogin_TextChanged(sender, e);
         }
 
     }

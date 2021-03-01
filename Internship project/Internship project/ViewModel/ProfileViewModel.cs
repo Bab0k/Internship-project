@@ -68,7 +68,5 @@ namespace Internship_project.ViewModel
         {
             Title = "Profile";
         }
-
-
     }
 }
