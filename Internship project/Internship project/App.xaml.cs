@@ -21,7 +21,7 @@ namespace Internship_project
 
             
 
-            NavigationService.NavigateAsync("NavigationPage/SignInView");
+            NavigationService.NavigateAsync($"{nameof(NavigationPage)}/{nameof(ProfileView)}");
 
         }
 

@@ -1,4 +1,5 @@
-﻿using Prism.Commands;
+﻿using Plugin.Media;
+using Prism.Commands;
 using Prism.Mvvm;
 using Prism.Navigation;
 using System;
@@ -10,25 +11,16 @@ using Xamarin.Forms;
 
 namespace Internship_project.ViewModel
 {
-    public class ProfileViewModel : ViewModelBase, INavigatedAware
+    public class ProfileViewModel : ViewModelBase, INavigatedAware, INotifyPropertyChanged
     {
-        ImageSource _Photo = ImageSource.FromUri(new Uri("pic_profile.png"));
-        public ImageSource Photo
+        string _Photo = ("pic_profile.png");
+        public string Photo
         {
             get => _Photo;
-            set
-            {
-                if (_Photo == value)
-                {
-                    return;
-                }
-
-                _Photo = value;
-
-                OnPropertyChanged(new PropertyChangedEventArgs(nameof(Photo)));
-            }
+            set => SetProperty(ref _Photo, value);
         }
 
+        #region
 
         string name = string.Empty;
         public string Name
@@ -83,10 +75,31 @@ namespace Internship_project.ViewModel
 
         private string UserId;
 
+        #endregion
+
         public ProfileViewModel(INavigationService navigationService) : base(navigationService)
         {
             Title = "Profile";
         }
+
+        private async void PickPhoto()
+        {
+            if (!CrossMedia.Current.IsPickPhotoSupported)
+            {
+                return;
+            }
+
+            var file = await CrossMedia.Current.PickPhotoAsync();
+
+            if (file == null)
+                return;
+
+            Photo = file.Path;
+
+        }
+
+        public DelegateCommand PickPhotoCommand =>
+             new DelegateCommand(PickPhoto);
 
 
         public void OnNavigatedFrom(INavigationParameters parameters)

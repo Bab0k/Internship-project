@@ -10,7 +10,16 @@
 
     </ContentPage.ToolbarItems>
     <StackLayout Spacing="20" Padding="20">
-        <Image Source="{Binding Photo}" WidthRequest="200" VerticalOptions="Start"/>
+        
+        
+        <Image WidthRequest="200" HeightRequest="250" VerticalOptions="Start"
+                     BackgroundColor="Transparent" Source="{Binding Photo} ">
+            <Image.GestureRecognizers >
+                <TapGestureRecognizer Command="{Binding PickPhotoCommand}"/>
+            </Image.GestureRecognizers>
+        </Image>
+        
+        
         <Entry WidthRequest="300" Placeholder="NickName" Text="{Binding NickName}"
                HorizontalOptions="CenterAndExpand"/>
         <Entry WidthRequest="300" Placeholder="Name" Text="{Binding Name}"
