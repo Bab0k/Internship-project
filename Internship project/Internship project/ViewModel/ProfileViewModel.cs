@@ -101,6 +101,13 @@ namespace Internship_project.ViewModel
         public DelegateCommand PickPhotoCommand =>
              new DelegateCommand(PickPhoto);
 
+        public DelegateCommand SaveData =>
+             new DelegateCommand(saveData);
+
+        private void saveData()
+        {
+
+        }
 
         public void OnNavigatedFrom(INavigationParameters parameters)
         {
