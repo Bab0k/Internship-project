@@ -6,7 +6,7 @@
              x:Class="Internship_project.View.ProfileView"
              Title="{Binding Title}">
     <ContentPage.ToolbarItems>
-        <ToolbarItem IconImageSource="ic_save3x.png"/>
+        <ToolbarItem IconImageSource="ic_save3x.png" Command="{Binding SaveData}"/>
 
     </ContentPage.ToolbarItems>
     <StackLayout Spacing="20" Padding="20">

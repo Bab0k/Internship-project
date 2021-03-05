@@ -8,6 +8,7 @@ using System.Linq;
 using Internship_project.Validation;
 using Xamarin.Forms;
 using Internship_project.View;
+using Internship_project.Model.UserData;
 
 namespace Internship_project.ViewModel
 {
@@ -68,22 +69,26 @@ namespace Internship_project.ViewModel
         private void SignUp_Clicked()
         {
             Realm _realm = Realm.GetInstance();
-            Transaction _transaction = _realm.BeginWrite();
             var Users = _realm.All<User>();
 
             if (CheckValidation(Users))
             {
+                Transaction _transaction = _realm.BeginWrite();
+
                 _realm.Add(new User
                 {
                     Login = Login,
                     Password = Password
                 });
 
+                UserData.User = Realm.GetInstance().All<User>().Where(u => u.Login == Login).First();
+
+                _transaction.Commit();
+                _transaction.Dispose();
+
                 NavigationCommand.Execute();
             }
 
-            _transaction.Commit();
-            _transaction.Dispose();
         }
         public bool UserLogin_TextChanged(object sender, TextChangedEventArgs e)
         {
@@ -104,7 +109,6 @@ namespace Internship_project.ViewModel
                 Application.Current.MainPage.DisplayAlert("Error", "Login be at least 4 and no more then 16 " +
                     "and starting at letter", "Cancel");
                 return false;
-
             }
             if (!Validation.Validation.IsPassword(Password))
             {
@@ -125,12 +129,7 @@ namespace Internship_project.ViewModel
 
         private void NavigationToMainListView()
         {
-            var param = new NavigationParameters();
-
-            param.Add("Login", Login);
-
-            NavigationService.NavigateAsync(nameof(MainListView), param);
-
+            NavigationService.NavigateAsync(nameof(MainListView));
         }
 
         public DelegateCommand CheckSignUp =>

@@ -4,7 +4,34 @@
              xmlns:prism="http://prismlibrary.com"
              prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="Internship_project.View.MainListView"
-             Title="{Binding Title}"
-             Content="{Binding GridContent}">
+             Title="{Binding Title}">
+
+    <AbsoluteLayout>
+
+        <ListView
+              HasUnevenRows="True"
+              ItemsSource="{Binding ProfileList}"
+              IsGroupingEnabled="True">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout>
+                            <Label Text="{Binding Name}" />
+                            <Label Text="{Binding NickName}" />
+                            <Label Text="{Binding Date}" />
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+        <ImageButton  CornerRadius="35" Source = "ic_add3x.png" BackgroundColor ="Blue" Command="{Binding NavigationCommand}"
+                     AbsoluteLayout.LayoutBounds=".95, .95, 70, 70" AbsoluteLayout.LayoutFlags="PositionProportional"/>
+
+
+
+
+
+    </AbsoluteLayout>
     
 </ContentPage>

@@ -11,7 +11,7 @@ namespace Internship_project.Model.Tables
 
         [PrimaryKey]
         public string Id { get; set; } = Guid.NewGuid().ToString();
-        public string IdProfile { get; set; }
+        public string IdUser { get; set; }
         public string Name { get; set; }
         public string NickName { get; set; }
         public string Description { get; set; }
