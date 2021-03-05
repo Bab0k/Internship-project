@@ -8,6 +8,9 @@ using Prism.Ioc;
 using Prism.Navigation;
 using Internship_project.View;
 using Internship_project.ViewModel;
+using Internship_project.Services.Authorization;
+using Realms;
+using Realms.Schema;
 
 namespace Internship_project
 {
@@ -15,15 +18,32 @@ namespace Internship_project
     {
         public App(IPlatformInitializer initializer = null): base(initializer) { }
 
+        IAuthorization authorization = new Authorization();
+
         protected override void OnInitialized()
         {
             InitializeComponent();
 
-            
 
-            NavigationService.NavigateAsync($"{nameof(NavigationPage)}/{nameof(ProfileView)}");
+            var config = RealmConfiguration.DefaultConfiguration;
+            config.SchemaVersion = 1;
+
+            RealmConfiguration.DefaultConfiguration = config;
+
+            if (authorization.IsAutorization())
+            {
+                NavigationService.NavigateAsync($"{nameof(NavigationPage)}/{nameof(MainListView)}");
+            }
+            else
+            {
+                NavigationService.NavigateAsync($"{nameof(NavigationPage)}/{nameof(SignInView)}");
+            }
+
+
 
         }
+
+
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {

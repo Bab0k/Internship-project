@@ -1,4 +1,5 @@
 ﻿using Internship_project.Model.Tables;
+using Internship_project.Model.UserData;
 using Internship_project.View;
 using Prism.Commands;
 using Prism.Mvvm;
@@ -64,6 +65,8 @@ namespace Internship_project.ViewModel
 
             if (CheckValidation(Users))
             {
+                UserData.User = Realm.GetInstance().All<User>().Where(u => u.Login == Login).First();
+
                 MainListViewNavigationCommand.Execute();
             }
         }
@@ -84,12 +87,7 @@ namespace Internship_project.ViewModel
                   new DelegateCommand(OnMainListViewNavigationCommand);
         private void OnMainListViewNavigationCommand()
         {
-            var param = new NavigationParameters();
-
-            param.Add("Login", Login);
-
-            NavigationService.NavigateAsync(nameof(MainListView), param);
-
+            NavigationService.NavigateAsync(nameof(MainListView));
         }
 
         public DelegateCommand SignUpViewNavigatioCommand =>
