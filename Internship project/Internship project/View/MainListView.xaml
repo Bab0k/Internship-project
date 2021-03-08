@@ -7,31 +7,33 @@
              Title="{Binding Title}">
 
     <AbsoluteLayout>
+            <ScrollView AbsoluteLayout.LayoutBounds = "0,0,1,1" AbsoluteLayout.LayoutFlags = "All">
+                <ListView
+                  HasUnevenRows="True"
+                  ItemsSource="{Binding ProfileList}"
+                  IsGroupingEnabled="False">
 
-        <ListView
-              HasUnevenRows="True"
-              ItemsSource="{Binding ProfileList}"
-              IsGroupingEnabled="True">
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <ViewCell>
-                        <StackLayout>
-                            <Label Text="{Binding Name}" />
-                            <Label Text="{Binding NickName}" />
-                            <Label Text="{Binding Date}" />
-                        </StackLayout>
-                    </ViewCell>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
-
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Grid Padding="10">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="100"/>
+                                    </Grid.RowDefinitions>
+                                    <Image Source="{Binding Path}" VerticalOptions="CenterAndExpand" />
+                                    <StackLayout Grid.Column="1" VerticalOptions="CenterAndExpand" HorizontalOptions="Start">
+                                        <Label Text="{Binding Name}"/>
+                                        <Label Text="{Binding NickName}"/>
+                                        <Label Text="{Binding Date}"/>
+                                    </StackLayout>
+                                    <Label Grid.Column="2" Text=""/>
+                                </Grid>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </ScrollView>
         <ImageButton  CornerRadius="35" Source = "ic_add3x.png" BackgroundColor ="Blue" Command="{Binding NavigationCommand}"
                      AbsoluteLayout.LayoutBounds=".95, .95, 70, 70" AbsoluteLayout.LayoutFlags="PositionProportional"/>
-
-
-
-
-
     </AbsoluteLayout>
-    
 </ContentPage>

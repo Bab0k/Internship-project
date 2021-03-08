@@ -15,7 +15,7 @@ using Xamarin.Forms;
 
 namespace Internship_project.ViewModel
 {
-    public class MainListViewModel : ViewModelBase, INavigatedAware
+    public class MainListViewModel : ViewModelBase
     {
         Xamarin.Forms.View _GridContent;
         public Xamarin.Forms.View GridContent
@@ -52,43 +52,27 @@ namespace Internship_project.ViewModel
         }
 
 
-        ObservableCollection<ProfileBinging> _ProfileList = new ObservableCollection<ProfileBinging>();
-        ObservableCollection<ProfileBinging> ProfileList
+        ObservableCollection<Profile> _ProfileList = new ObservableCollection<Profile>();
+        public ObservableCollection<Profile> ProfileList
         {
             get => _ProfileList;
-            set => SetProperty(ref _ProfileList, value);
+            set
+            {
+                if (ProfileList == value)
+                {
+                    return;
+                }
+                _ProfileList = value;
+                OnPropertyChanged(new PropertyChangedEventArgs(nameof(ProfileList)));
+            }
         }
         public string UserId { get { return UserData.User.Id; } }
 
         public MainListViewModel(INavigationService navigationService) : base(navigationService)
         {
             Title = "MainPage";
-        }
 
-        private void Init()
-        {
-
-            CurrentGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(1, GridUnitType.Star) });
-            CurrentGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(1, GridUnitType.Star) });
-            CurrentGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(1, GridUnitType.Star) });
-            
-            
-            var abs = new AbsoluteLayout();
-            abs.Children.Add(new ImageButton()
-            {
-                Aspect = Aspect.AspectFit,
-                BackgroundColor = Color.Blue,
-                CornerRadius = 35,
-                Command = NavigationCommand,
-                Source = "ic_add3x.png",
-
-            }, new Rectangle(.95, .95, 70, 70), AbsoluteLayoutFlags.PositionProportional);
-
-            CurrentGrid.RowDefinitions.Add(new RowDefinition { Height = new GridLength(5, GridUnitType.Absolute) });
-
-            abs.Children.Add(CurrentGrid);
-
-            GridContent = new ScrollView() { Content = abs };
+            ProfileList = new ObservableCollection<Profile>(Realm.GetInstance().All<Profile>().Where(u => u.IdUser == UserId).OrderBy(u => u.Date));
         }
 
         private void NavigationToMainListView()
@@ -98,26 +82,5 @@ namespace Internship_project.ViewModel
 
         public DelegateCommand NavigationCommand =>
             new DelegateCommand(NavigationToMainListView);
-
-
-        public void OnNavigatedFrom(INavigationParameters parameters)
-        {
-        }
-        void INavigatedAware.OnNavigatedTo(INavigationParameters parameters)
-        {
-            ProfileList = new ObservableCollection<ProfileBinging>();
-
-            foreach (var item in Realm.GetInstance().All<Profile>().Where(u => u.IdUser == UserId))
-            {
-                ProfileList.Add(new ProfileBinging
-                {
-                    Id = item.Id,
-                    IdUser = item.IdUser,
-                    Name = item.Name,
-                    NickName = item.NickName,
-                    File = ImageSource.FromStream(() => new MemoryStream(item.File))
-                });
-            }
-        }
     }
 }

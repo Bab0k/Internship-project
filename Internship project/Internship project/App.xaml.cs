@@ -26,7 +26,7 @@ namespace Internship_project
 
 
             var config = RealmConfiguration.DefaultConfiguration;
-            config.SchemaVersion = 1;
+            config.SchemaVersion = 2;
 
             RealmConfiguration.DefaultConfiguration = config;
 

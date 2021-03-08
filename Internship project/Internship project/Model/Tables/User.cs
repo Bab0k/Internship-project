@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Internship_project.Model.Tables
 {
-    class User: RealmObject
+    public class User: RealmObject
     {
 
         [PrimaryKey]
