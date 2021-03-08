@@ -11,7 +11,7 @@ namespace Internship_project.ViewModel
     public class ViewModelBase : BindableBase, IDestructible
     {
 
-        public PropertyChangedEventHandler propertyChanged;
+        public event PropertyChangedEventHandler propertyChanged;
 
         protected INavigationService NavigationService { get; private set; }
         private string _title;

@@ -13,13 +13,11 @@ namespace Internship_project.ViewModel
 {
     public class ProfileViewModel : ViewModelBase
     {
-        private byte[] ImageArray;
-
-        ImageSource _Photo = ImageSource.FromFile("pic_profile.png");
-        public ImageSource Photo
+        string _Path = "pic_profile";
+        public string Path
         {
-            get => _Photo;
-            set => SetProperty(ref _Photo, value);
+            get => _Path;
+            set => SetProperty(ref _Path, value);
         }
 
         string _name = string.Empty;
@@ -73,8 +71,9 @@ namespace Internship_project.ViewModel
             }
         }
         public string UserId { get { return UserData.User.Id; } }
+        Profile NewProfile;
 
-        public ProfileViewModel(INavigationService navigationService) : base(navigationService)
+        public ProfileViewModel(INavigationService navigationService) : base(navigationService) 
         {
             Title = "Profile";
         }
@@ -91,23 +90,8 @@ namespace Internship_project.ViewModel
             if (file == null)
                 return;
 
-            ImageArray = GetByteArrayFromStream(file.GetStream());
 
-            Photo = ImageSource.FromStream(() => { return new MemoryStream(ImageArray); });
-
-        }
-
-        private byte[] GetByteArrayFromStream(Stream stream)
-        {
-            if (stream == null)
-            {
-                return null;
-            }
-            using (MemoryStream ms = new MemoryStream())
-            {
-                stream.CopyTo(ms);
-                return ms.ToArray();
-            }
+            Path = file.Path;
         }
 
         public DelegateCommand PickPhotoCommand =>
@@ -121,15 +105,17 @@ namespace Internship_project.ViewModel
             Realm _realm = Realm.GetInstance();
             Transaction _transaction = _realm.BeginWrite();
 
-            _realm.Add(new Profile
+            NewProfile = new Profile
             {
                 IdUser = UserId,
-                File = ImageArray,
+                Path = Path,
                 Description = Description,
                 Name = Name,
                 NickName = NickName,
-                Date = DateTime.Now.ToString("MM/dd/yyyy")
-            });
+                Date = DateTime.Now.ToString()
+            };
+
+            _realm.Add(NewProfile);
 
             _transaction.Commit();
 

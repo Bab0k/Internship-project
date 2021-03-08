@@ -7,7 +7,7 @@ using System.Text;
 namespace Internship_project.Model.UserData
 {
     
-    static class UserData
+    public static class UserData
     {
         public static User User { get; set; }
         public static IQueryable<Profile> Profiles;
