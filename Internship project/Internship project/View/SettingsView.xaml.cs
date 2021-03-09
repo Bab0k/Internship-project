@@ -2,9 +2,9 @@
 
 namespace Internship_project.View
 {
-    public partial class Settings : ContentPage
+    public partial class SettingsView : ContentPage
     {
-        public Settings()
+        public SettingsView()
         {
             InitializeComponent();
         }

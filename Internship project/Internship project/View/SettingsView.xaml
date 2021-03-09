@@ -3,8 +3,14 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:prism="http://prismlibrary.com"
              prism:ViewModelLocator.AutowireViewModel="True"
-             x:Class="Internship_project.View.Settings">
+             x:Class="Internship_project.View.SettingsView">
 
 
 
+
+    <Label Text="{Binding DateTime, StringFormat='{0:T}'}"
+           FontSize="Large"
+           HorizontalOptions="Center"
+           VerticalOptions="Center">
+    </Label>
 </ContentPage>

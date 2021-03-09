@@ -3,7 +3,9 @@ using Prism.Mvvm;
 using Prism.Navigation;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
+using Xamarin.Forms;
 
 namespace Internship_project.ViewModel
 {

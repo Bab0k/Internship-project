@@ -18,47 +18,21 @@ namespace Internship_project.ViewModel
         public string Login
         {
             get => login;
-            set
-            {
-                if (login == value)
-                {
-                    return;
-                }
-
-                login = value;
-
-                OnPropertyChanged(new PropertyChangedEventArgs(nameof(Login)));
-            }
+            set => SetProperty(ref login, value);
         }
 
         string password = string.Empty;
         public string Password
         {
             get  => password;
-            set
-            {
-                if (password == value)
-                {
-                    return;
-                }   
-                password = value;
-                OnPropertyChanged(new PropertyChangedEventArgs(nameof(Password)));
-            }
+            set => SetProperty(ref password, value);
         }
 
         string confirmUserPassword = string.Empty;
         public string ConfirmUserPassword
         {
             get => confirmUserPassword;
-            set
-            {
-                if (confirmUserPassword == value)
-                {
-                    return;
-                }
-                confirmUserPassword = value;
-                OnPropertyChanged(new PropertyChangedEventArgs(nameof(ConfirmUserPassword)));
-            }
+            set => SetProperty(ref confirmUserPassword, value);
         }
 
         public SignUpViewModel(INavigationService navigationService) : base(navigationService)

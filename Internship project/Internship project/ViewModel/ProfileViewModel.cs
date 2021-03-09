@@ -17,58 +17,28 @@ namespace Internship_project.ViewModel
         public string Path
         {
             get => _Path;
-            set => SetProperty(ref _Path, value);
+            set => SetProperty(ref _Path, value, nameof(Path));
         }
 
         string _name = string.Empty;
         public string Name
         {
             get => _name;
-            set
-            {
-                if (_name == value)
-                {
-                    return;
-                }
-
-                _name = value;
-
-                OnPropertyChanged(new PropertyChangedEventArgs(nameof(Name)));
-            }
+            set => SetProperty(ref _name, value, nameof(Name));
         }
 
         string _nickname = string.Empty;
         public string NickName
         {
             get => _nickname;
-            set
-            {
-                if (_nickname == value)
-                {
-                    return;
-                }
-
-                _nickname = value;
-
-                OnPropertyChanged(new PropertyChangedEventArgs(nameof(NickName)));
-            }
+            set => SetProperty(ref _nickname, value, nameof(NickName));
         }
 
         string _description = string.Empty;
         public string Description
         {
             get => _description;
-            set
-            {
-                if (_description == value)
-                {
-                    return;
-                }
-
-                _description = value;
-
-                OnPropertyChanged(new PropertyChangedEventArgs(nameof(Description)));
-            }
+            set => SetProperty(ref _description, value, nameof(Description));
         }
         public string UserId { get { return UserData.User.Id; } }
         Profile NewProfile;
