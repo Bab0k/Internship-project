@@ -13,7 +13,7 @@
         
         
         <Image WidthRequest="200" HeightRequest="250" VerticalOptions="Start"
-                     BackgroundColor="Transparent" Source="{Binding Photo} ">
+                     BackgroundColor="Transparent" Source="{Binding Path} ">
             <Image.GestureRecognizers >
                 <TapGestureRecognizer Command="{Binding PickPhotoCommand}"/>
             </Image.GestureRecognizers>

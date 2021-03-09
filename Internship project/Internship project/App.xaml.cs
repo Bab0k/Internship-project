@@ -38,13 +38,8 @@ namespace Internship_project
             {
                 NavigationService.NavigateAsync($"{nameof(NavigationPage)}/{nameof(SignInView)}");
             }
-
-
-
         }
-
-
-
+        
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
             containerRegistry.RegisterForNavigation<NavigationPage>();
@@ -52,6 +47,7 @@ namespace Internship_project
             containerRegistry.RegisterForNavigation<SignUpView, SignUpViewModel>();
             containerRegistry.RegisterForNavigation<ProfileView, ProfileViewModel>();
             containerRegistry.RegisterForNavigation<MainListView, MainListViewModel>();
+            containerRegistry.RegisterForNavigation<SettingsView, SettingsViewModel>();
 
         }
     }
