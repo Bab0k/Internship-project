@@ -14,7 +14,7 @@ using Xamarin.Forms;
 
 namespace Internship_project.ViewModel
 {
-    public class SignInViewModel: ViewModelBase
+    public class SignInViewModel: ViewModelBase, INavigationAware
     {
         #region Properties
 
@@ -54,13 +54,14 @@ namespace Internship_project.ViewModel
             LoginPlaceHolder = Language.Login;
             PasswordPlaceHolder = Language.Password;
             Title = Language.Title;
-        
         }
 
         public bool UserLogin_TextChanged(object sender, TextChangedEventArgs e)
         {
             return !string.IsNullOrEmpty(Login) && !string.IsNullOrEmpty(Password);
         }
+
+
 
         private void SignIn_Clicked()
         {
@@ -84,7 +85,6 @@ namespace Internship_project.ViewModel
             Application.Current.MainPage.DisplayAlert(Language.Error, Language.MissingLoginOrPassword, Language.Cancel);
 
             return false;
-
         }
 
         private void OnMainListViewNavigationCommand()
@@ -96,6 +96,25 @@ namespace Internship_project.ViewModel
         {
             NavigationService.NavigateAsync(nameof(SignUpView));
         }
+
+        public void OnNavigatedFrom(INavigationParameters parameters)
+        {
+        }
+
+        public void OnNavigatedTo(INavigationParameters parameters)
+        {
+            string login;
+            if (parameters.TryGetValue<string>("Login", out login))
+            {
+                Login = login;
+            }
+            string password;
+            if (parameters.TryGetValue<string>("Password", out password))
+            {
+                Password = password;
+            }
+        }   
+
         public DelegateCommand SignUpViewNavigatioCommand =>
             new DelegateCommand(OnSignUpViewNavigatioCommand);
         public DelegateCommand MainListViewNavigationCommand =>

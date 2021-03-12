@@ -21,7 +21,7 @@
                   IsGroupingEnabled="False">
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                         <ViewCell>
+                        <ViewCell>
                             <ViewCell.ContextActions>
                                 <MenuItem Clicked="OnEdit" CommandParameter="{Binding .}" Text="Edit"/>
                                 <MenuItem Clicked="OnDelete" CommandParameter="{Binding .}" Text="Delete" IsDestructive="True" />
@@ -43,7 +43,7 @@
                 </ListView.ItemTemplate>
             </ListView>
         </ScrollView>
-        
+
         <ImageButton  CornerRadius="35" Source = "ic_add3x.png" BackgroundColor ="Blue" Command="{Binding NavigationToProfile}"
                      AbsoluteLayout.LayoutBounds=".95, .95, 70, 70" AbsoluteLayout.LayoutFlags="PositionProportional"/>
     </AbsoluteLayout>

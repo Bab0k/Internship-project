@@ -19,7 +19,6 @@
             </Image.GestureRecognizers>
         </Image>
 
-
         <Entry WidthRequest="300" Placeholder="{Binding NickNamePlaceHolder}" Text="{Binding NickName}"
                HorizontalOptions="CenterAndExpand"/>
         <Entry WidthRequest="300" Placeholder="{Binding NamePlaceHolder}" Text="{Binding Name}"

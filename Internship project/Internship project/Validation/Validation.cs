@@ -33,8 +33,6 @@ namespace Internship_project.Validation
         {
             var bll = Regex.IsMatch(text, pattern);
             return bll;
-
         }
     }
-
 }
