@@ -10,7 +10,6 @@ namespace Internship_project.Services.Settings
 {
     public interface ISettings
     {
-
         ObservableCollection<Profile> OrderBy(ObservableCollection<Profile> profiles);
         Base GetLanguage();
         string GetOrderType();

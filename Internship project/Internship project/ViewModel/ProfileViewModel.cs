@@ -15,6 +15,8 @@ namespace Internship_project.ViewModel
 {
     public class ProfileViewModel : ViewModelBase, INavigatedAware
     {
+        #region Properties
+
         string _Path = "pic_profile";
         public string Path
         {
@@ -55,6 +57,9 @@ namespace Internship_project.ViewModel
         public string NamePlaceHolder { get; set; }
         public string NickNamePlaceHolder { get; set; }
         public string DescriptionPlaceHolder { get; set; }
+
+        #endregion
+
         public ProfileViewModel(INavigationService navigationService) : base(navigationService) 
         {
             Language = UserData.settings.GetLanguage().profile;

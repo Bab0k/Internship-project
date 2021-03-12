@@ -21,8 +21,5 @@ namespace Internship_project.Model.UserData
                 Language = new English()
             };
         }
-
-
-
     }
 }

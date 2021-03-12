@@ -27,7 +27,6 @@ namespace Internship_project
 
             InitializeComponent();
 
-
             var config = RealmConfiguration.DefaultConfiguration;
             config.SchemaVersion = 2;
 

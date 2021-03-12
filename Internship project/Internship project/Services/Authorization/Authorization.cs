@@ -14,7 +14,6 @@ namespace Internship_project.Services.Authorization
         {
             return UserData.User != null;
         }
-
         bool IAuthorization.Authorization(string Login, string Password)
         {
             var CurrentUser = Realm.GetInstance().All<User>().Where(u => u.Login == Login && u.Password == Password);

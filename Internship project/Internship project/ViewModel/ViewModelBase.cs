@@ -3,7 +3,7 @@ using Prism.Navigation;
 
 namespace Internship_project.ViewModel
 {
-    public class ViewModelBase : BindableBase, IDestructible
+    public class ViewModelBase : BindableBase
     {
 
         protected INavigationService NavigationService { get; private set; }
@@ -17,10 +17,6 @@ namespace Internship_project.ViewModel
         public ViewModelBase(INavigationService navigationService)
         {
             NavigationService = navigationService;
-        }
-
-        public void Destroy()
-        {
         }
     }
 }

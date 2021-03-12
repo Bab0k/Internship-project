@@ -134,9 +134,8 @@ namespace Internship_project.ViewModel
             UserData.settings = settings;
 
             NavigationService.NavigateAsync($"/{nameof(NavigationPage)}/{nameof(MainListView)}");
-
-
         }
+
         private void ChangeThame()
         {
             if (Application.Current.UserAppTheme == OSAppTheme.Light)
@@ -153,7 +152,5 @@ namespace Internship_project.ViewModel
 
         public DelegateCommand SaveData =>
             new DelegateCommand(saveData);
-
-
     }
 }

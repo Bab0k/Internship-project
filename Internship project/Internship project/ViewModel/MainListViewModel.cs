@@ -19,6 +19,8 @@ namespace Internship_project.ViewModel
 {
     public class MainListViewModel : ViewModelBase, INavigatedAware
     {
+        #region Properties
+
         ObservableCollection<Profile> _ProfileList = new ObservableCollection<Profile>();
         public ObservableCollection<Profile> ProfileList
         {
@@ -43,6 +45,8 @@ namespace Internship_project.ViewModel
 
         string Edit { get; set; }
         string Delete { get; set; }
+
+        #endregion
 
         public MainListViewModel(INavigationService navigationService) : base(navigationService)
         {
@@ -74,17 +78,14 @@ namespace Internship_project.ViewModel
 
             NavigationService.NavigateAsync(nameof(ProfileView), param);
         }
-
         public void DeleteItem(Profile profile)
         {
             var _realm = Realm.GetInstance();
-
             Transaction _transaction = _realm.BeginWrite();
 
             _realm.Remove(profile);
 
             _transaction.Commit();
-
             _transaction.Dispose();
 
             ProfileList = UserData.settings.OrderBy(new ObservableCollection<Profile>(Realm.GetInstance().All<Profile>().Where(u => u.IdUser == UserId)));

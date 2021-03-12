@@ -16,8 +16,6 @@
             <Button Text="{Binding SigninButton}"  Command="{Binding CheckSignIn}" x:Name="SignIn" 
                     HorizontalOptions="CenterAndExpand" WidthRequest="250"
                     VerticalOptions="EndAndExpand"/>
-            
-            
             <Label HorizontalOptions="CenterAndExpand"
                    VerticalOptions="StartAndExpand" LineBreakMode="WordWrap">   
                 <Label.FormattedText>
@@ -32,7 +30,6 @@
                         </Span>
                     </FormattedString>
                 </Label.FormattedText>
-                
             </Label>
         </StackLayout>
     </ContentPage.Content>

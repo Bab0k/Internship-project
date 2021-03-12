@@ -85,7 +85,6 @@ namespace Internship_project.ViewModel
 
                 NavigationCommand.Execute();
             }
-
         }
         public bool UserLogin_TextChanged(object sender, TextChangedEventArgs e)
         {
@@ -120,10 +119,15 @@ namespace Internship_project.ViewModel
             return true;
         }
 
-
         private void NavigationToMainListView()
         {
-            NavigationService.NavigateAsync($"/{nameof(NavigationPage)}/{nameof(MainListView)}");
+            NavigationParameters param = new NavigationParameters
+            {
+                {"Login", Login },
+                {"Password", Password }
+            };
+
+            NavigationService.GoBackAsync(param);
         }
 
         public DelegateCommand CheckSignUp =>
