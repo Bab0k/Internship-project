@@ -8,12 +8,12 @@ namespace Internship_project.Validation
 {
     static class Validation
     {
-        private static string uppercase = @"\w*[A-Z]+\w";
-        private static string lovercase = @"\w*[a-z]+\w*";
-        private static string number = @"\w*[0-9]+\w*";
-        private static string loginlen = @"^\w{4,16}";
-        private static string Passwordlen = @"^\w{6,16}";
-        public static string start = @"^[a-zA-Z]+\w*";
+        private static readonly string uppercase = @"\w*[A-Z]+\w";
+        private static readonly string lovercase = @"\w*[a-z]+\w*";
+        private static readonly string number = @"\w*[0-9]+\w*";
+        private static readonly string loginlen = @"^\w{4,16}";
+        private static readonly string Passwordlen = @"^\w{6,16}";
+        public static readonly string start = @"^[a-zA-Z]+\w*";
 
         public static bool IsLogin(string text)
         {
