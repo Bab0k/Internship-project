@@ -18,13 +18,13 @@
                 <TapGestureRecognizer Command="{Binding PickPhotoCommand}"/>
             </Image.GestureRecognizers>
         </Image>
-        
-        
-        <Entry WidthRequest="300" Placeholder="NickName" Text="{Binding NickName}"
+
+
+        <Entry WidthRequest="300" Placeholder="{Binding NickNamePlaceHolder}" Text="{Binding NickName}"
                HorizontalOptions="CenterAndExpand"/>
-        <Entry WidthRequest="300" Placeholder="Name" Text="{Binding Name}"
+        <Entry WidthRequest="300" Placeholder="{Binding NamePlaceHolder}" Text="{Binding Name}"
                HorizontalOptions="CenterAndExpand"/>
-        <Editor WidthRequest="300" HeightRequest="200" BackgroundColor="Gray" Placeholder="Description" Text="{Binding Description}" 
+        <Editor WidthRequest="300" HeightRequest="200" BackgroundColor="Gray" Placeholder="{Binding DescriptionPlaceHolder}" Text="{Binding Description}" 
                 HorizontalOptions="CenterAndExpand"/>
 
     </StackLayout>

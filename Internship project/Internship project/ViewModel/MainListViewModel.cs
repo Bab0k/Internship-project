@@ -1,4 +1,5 @@
-﻿using Internship_project.Model.Tables;
+﻿using Internship_project.Model.Language;
+using Internship_project.Model.Tables;
 using Internship_project.Model.UserData;
 using Internship_project.View;
 using Prism.Commands;
@@ -11,6 +12,7 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.IO;
 using System.Linq;
+using System.Windows.Input;
 using Xamarin.Forms;
 
 namespace Internship_project.ViewModel
@@ -21,30 +23,86 @@ namespace Internship_project.ViewModel
         public ObservableCollection<Profile> ProfileList
         {
             get => _ProfileList;
-            set => SetProperty(ref _ProfileList, value, nameof(ProfileList));
+            set => SetProperty(ref _ProfileList, value);
         }
+        Profile _SelectedProfile;
+        public Profile SelectedProfile
+        {
+            get => _SelectedProfile;
+            set => SetProperty(ref _SelectedProfile, value);
+        }
+
         public string UserId { get { return UserData.User.Id; } }
+
+        Base.MainList _Language;
+        public Base.MainList Language
+        {
+            get => _Language;
+            set => SetProperty(ref _Language, value);
+        }
+
+        string Edit { get; set; }
+        string Delete { get; set; }
 
         public MainListViewModel(INavigationService navigationService) : base(navigationService)
         {
-            Title = "MainPage";
+            Language = UserData.settings.GetLanguage().mainList;
+
+            Title = Language.Title;
         }
 
-        private void NavigationToMainListView()
+        private void _NavigationToProfile()
         {
             NavigationService.NavigateAsync(nameof(ProfileView));
         }
+        private void _NavigationToSettings()
+        {
+            NavigationService.NavigateAsync(nameof(SettingsView));
+        }
+        private void Logout()
+        {
+            UserData.User = null;
+            NavigationService.NavigateAsync($"/{nameof(NavigationPage)}/{nameof(SignInView)}");
+        }
 
+        public void EditItem(Profile profile)
+        {
+            NavigationParameters param = new NavigationParameters
+            {
+                { "CurrentProfile", profile }
+            };
+
+            NavigationService.NavigateAsync(nameof(ProfileView), param);
+        }
+
+        public void DeleteItem(Profile profile)
+        {
+            var _realm = Realm.GetInstance();
+
+            Transaction _transaction = _realm.BeginWrite();
+
+            _realm.Remove(profile);
+
+            _transaction.Commit();
+
+            _transaction.Dispose();
+
+            ProfileList = UserData.settings.OrderBy(new ObservableCollection<Profile>(Realm.GetInstance().All<Profile>().Where(u => u.IdUser == UserId)));
+        }
         public void OnNavigatedFrom(INavigationParameters parameters)
         {
         }
 
         public void OnNavigatedTo(INavigationParameters parameters)
         {
-            ProfileList = new ObservableCollection<Profile>(Realm.GetInstance().All<Profile>().Where(u => u.IdUser == UserId).OrderBy(u => u.Date));
+            ProfileList = UserData.settings.OrderBy(new ObservableCollection<Profile>(Realm.GetInstance().All<Profile>().Where(u => u.IdUser == UserId)));
         }
 
-        public DelegateCommand NavigationCommand =>
-            new DelegateCommand(NavigationToMainListView);
+        public DelegateCommand NavigationToProfile =>
+            new DelegateCommand(_NavigationToProfile);
+        public DelegateCommand NavigationToSettings =>
+            new DelegateCommand(_NavigationToSettings);
+        public DelegateCommand LogoutCommand =>
+            new DelegateCommand(Logout);
     }
 }

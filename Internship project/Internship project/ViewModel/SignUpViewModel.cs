@@ -9,11 +9,14 @@ using Internship_project.Validation;
 using Xamarin.Forms;
 using Internship_project.View;
 using Internship_project.Model.UserData;
+using Internship_project.Model.Language;
 
 namespace Internship_project.ViewModel
 {
-    public class SignUpViewModel : ViewModelBase, INotifyPropertyChanged
+    public class SignUpViewModel : ViewModelBase
     {
+        #region Properties
+
         string login = string.Empty;
         public string Login
         {
@@ -35,9 +38,29 @@ namespace Internship_project.ViewModel
             set => SetProperty(ref confirmUserPassword, value);
         }
 
+        Base.SignUp _Language;
+        public Base.SignUp Language
+        {
+            get => _Language;
+            set => SetProperty(ref _Language, value);
+        }
+
+        public string SignupButton { get; set; }
+        public string LoginPlaceHolder { get; set; }
+        public string PasswordPlaceHolder { get; set; }
+        public string ConfirmPasswordPlaceHolder { get; set; }
+
+        #endregion
+
         public SignUpViewModel(INavigationService navigationService) : base(navigationService)
         {
-            Title = "SignUp";
+            Language = UserData.settings.GetLanguage().signUp;
+
+            SignupButton = Language.Signup;
+            LoginPlaceHolder = Language.Login;
+            PasswordPlaceHolder = Language.Password;
+            ConfirmPasswordPlaceHolder = Language.ConfirmPassword;
+            Title = Language.Title;
         }
 
         private void SignUp_Clicked()
@@ -74,26 +97,23 @@ namespace Internship_project.ViewModel
             
             if (users.Where(u => u.Login == Login).Any())
             {
-                Application.Current.MainPage.DisplayAlert("Error", "this login exists", "Cancel");
+                Application.Current.MainPage.DisplayAlert(Language.Error, Language.LoginExist, Language.Cancel);
 
                 return false;
             }
             if (!Validation.Validation.IsLogin(Login))
             {
-                Application.Current.MainPage.DisplayAlert("Error", "Login be at least 4 and no more then 16 " +
-                    "and starting at letter", "Cancel");
+                Application.Current.MainPage.DisplayAlert(Language.Error, Language.LoginNonValidation, Language.Cancel);
                 return false;
             }
             if (!Validation.Validation.IsPassword(Password))
             {
-                Application.Current.MainPage.DisplayAlert("Error", "Password be at least 4 and no more then 16" +
-                    "and must contain at least one uppercase letter," +
-                    "one  lovercase letter and one number", "Cancel");
+                Application.Current.MainPage.DisplayAlert(Language.Error, Language.PasswordNonValidation, Language.Cancel);
                 return false;
             }
             if (Password != ConfirmUserPassword)
             {
-                Application.Current.MainPage.DisplayAlert("Error", "Password mismatch", "Cancel");
+                Application.Current.MainPage.DisplayAlert(Language.Error, Language.PasswordMismatch, Language.Cancel);
 
                 return false;
             }
@@ -103,7 +123,7 @@ namespace Internship_project.ViewModel
 
         private void NavigationToMainListView()
         {
-            NavigationService.NavigateAsync(nameof(MainListView));
+            NavigationService.NavigateAsync($"/{nameof(NavigationPage)}/{nameof(MainListView)}");
         }
 
         public DelegateCommand CheckSignUp =>

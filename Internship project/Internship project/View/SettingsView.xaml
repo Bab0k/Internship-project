@@ -5,12 +5,50 @@
              prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="Internship_project.View.SettingsView">
 
+    <ContentPage.ToolbarItems>
+        <ToolbarItem IconImageSource="ic_save3x.png" Command="{Binding SaveData}"/>
+    </ContentPage.ToolbarItems>
 
+    <Grid Margin="20">
 
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="91*"></ColumnDefinition>
+            <ColumnDefinition Width="70*"></ColumnDefinition>
+            <ColumnDefinition Width="100*"></ColumnDefinition>
+            <ColumnDefinition Width="100*"></ColumnDefinition>
+            
+        </Grid.ColumnDefinitions>
 
-    <Label Text="{Binding DateTime, StringFormat='{0:T}'}"
-           FontSize="Large"
-           HorizontalOptions="Center"
-           VerticalOptions="Center">
-    </Label>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100"></RowDefinition>
+            <RowDefinition Height="20"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <Label Text="{Binding ApplicationLanguage}" VerticalOptions="CenterAndExpand"></Label>
+        <Picker  Grid.Row="0" Grid.ColumnSpan="2" Grid.Column="1"
+                SelectedItem="{Binding language}" TitleColor="Red">
+            <Picker.ItemsSource>
+                <x:Array Type="{x:Type x:String}">
+                    <x:String>Русский</x:String>
+                    <x:String>English</x:String>
+                </x:Array>
+            </Picker.ItemsSource>
+        </Picker>
+
+        <Label Text="{Binding Sort}" Margin="0,0,0,0" Grid.Row="2" ></Label>
+
+        <StackLayout Grid.Column="1" Grid.Row="2" >
+            <Label Text="{Binding Name}"></Label>
+            <RadioButton IsChecked="{Binding ByName}" GroupName="1"></RadioButton>
+        </StackLayout>
+        <StackLayout Grid.Column="2" Grid.Row="2">
+            <Label Text="{Binding NickName}"></Label>
+            <RadioButton IsChecked="{Binding ByNickName}" GroupName="1"></RadioButton>
+        </StackLayout>
+        <StackLayout Grid.Column="3" Grid.Row="2">
+            <Label Text="{Binding Date}" ></Label>
+            <RadioButton IsChecked="{Binding ByDate}" GroupName="1"></RadioButton>
+        </StackLayout>
+    </Grid>
+    
 </ContentPage>

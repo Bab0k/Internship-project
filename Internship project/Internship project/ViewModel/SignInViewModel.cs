@@ -1,4 +1,5 @@
-﻿using Internship_project.Model.Tables;
+﻿using Internship_project.Model.Language;
+using Internship_project.Model.Tables;
 using Internship_project.Model.UserData;
 using Internship_project.View;
 using Prism.Commands;
@@ -15,6 +16,7 @@ namespace Internship_project.ViewModel
 {
     public class SignInViewModel: ViewModelBase
     {
+        #region Properties
 
         string login = string.Empty;
         public string Login
@@ -31,9 +33,28 @@ namespace Internship_project.ViewModel
             set => SetProperty(ref password, value);
         }
 
+        Base.SignIn _Language;
+        public Base.SignIn Language
+        {
+            get => _Language;
+            set => SetProperty(ref _Language, value);
+        }
+
+        public string SigninButton { get; set; }
+        public string SignupButton { get; set; }
+        public string LoginPlaceHolder { get; set; }
+        public string PasswordPlaceHolder { get; set; }
+
+        #endregion
         public SignInViewModel(INavigationService navigationService) : base(navigationService)
         {
-            Title = "SignIn";
+            Language = UserData.settings.GetLanguage().signIn;
+            SigninButton = Language.Signin;
+            SignupButton = Language.Signup;
+            LoginPlaceHolder = Language.Login;
+            PasswordPlaceHolder = Language.Password;
+            Title = Language.Title;
+        
         }
 
         public bool UserLogin_TextChanged(object sender, TextChangedEventArgs e)
@@ -60,26 +81,25 @@ namespace Internship_project.ViewModel
             {
                 return true;
             }
-            Application.Current.MainPage.DisplayAlert("Error", "Missing login or password", "Cancel");
+            Application.Current.MainPage.DisplayAlert(Language.Error, Language.MissingLoginOrPassword, Language.Cancel);
 
             return false;
 
         }
 
-        public DelegateCommand MainListViewNavigationCommand =>
-                  new DelegateCommand(OnMainListViewNavigationCommand);
         private void OnMainListViewNavigationCommand()
         {
-            NavigationService.NavigateAsync(nameof(MainListView));
+            NavigationService.NavigateAsync($"/{nameof(NavigationPage)}/{nameof(MainListView)}");
         }
 
-        public DelegateCommand SignUpViewNavigatioCommand =>
-             new DelegateCommand(OnSignUpViewNavigatioCommand);
         private void OnSignUpViewNavigatioCommand()
         {
             NavigationService.NavigateAsync(nameof(SignUpView));
         }
-
+        public DelegateCommand SignUpViewNavigatioCommand =>
+            new DelegateCommand(OnSignUpViewNavigatioCommand);
+        public DelegateCommand MainListViewNavigationCommand =>
+            new DelegateCommand(OnMainListViewNavigationCommand);
         public DelegateCommand CheckSignIn =>
             new DelegateCommand(SignIn_Clicked);
     }

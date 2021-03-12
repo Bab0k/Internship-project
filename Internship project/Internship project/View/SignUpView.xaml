@@ -3,22 +3,22 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:behaviors="clr-namespace:Prism.Behaviors;assembly=Prism.Forms"
              x:Class="Internship_project.View.SignUpView"
-             Title="{Binding Title}"    >
+             Title="{Binding Title}">
 
     <ContentPage.Content>
         <StackLayout>
-            <Entry Placeholder="Login" x:Name="UserLogin" Text="{Binding Login}" TextChanged="UserLogin_TextChanged"
+            <Entry Placeholder="{Binding LoginPlaceHolder}" Text="{Binding Login}" TextChanged="UserLogin_TextChanged"
                    VerticalOptions="EndAndExpand" WidthRequest="250"
                    HorizontalOptions="CenterAndExpand"> 
             </Entry>
-            <Entry Placeholder="Password" IsPassword="true" x:Name="UserPassword" Text="{Binding Password}" TextChanged="UserLogin_TextChanged"
+            <Entry Placeholder="{Binding PasswordPlaceHolder}" IsPassword="true" x:Name="UserPassword" Text="{Binding Password}" TextChanged="UserLogin_TextChanged"
                    WidthRequest="250"
                 HorizontalOptions="CenterAndExpand"/>
-            <Entry Placeholder="Confirm password" IsPassword="true" x:Name="ConfirmUserPassword" Text="{Binding ConfirmUserPassword}"  TextChanged="UserLogin_TextChanged"
+            <Entry Placeholder="{Binding ConfirmPasswordPlaceHolder}" IsPassword="true" Text="{Binding ConfirmUserPassword}" TextChanged="UserLogin_TextChanged"
                    VerticalOptions="StartAndExpand" WidthRequest="250"
                 HorizontalOptions="CenterAndExpand" >
             </Entry>
-            <Button Text="Sign Up" x:Name="SignUp" Command="{Binding CheckSignUp}" IsEnabled="{Binding IsEnabledButton}" 
+            <Button Text="{Binding SignupButton}" x:Name="SignUp" Command="{Binding CheckSignUp}" IsEnabled="{Binding IsEnabledButton}" 
                     HorizontalOptions="CenterAndExpand" WidthRequest="250"
                     VerticalOptions="StartAndExpand"/>
         </StackLayout>

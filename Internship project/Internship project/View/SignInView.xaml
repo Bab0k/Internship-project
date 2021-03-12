@@ -7,23 +7,23 @@
     
     <ContentPage.Content>
         <StackLayout>
-            <Entry Placeholder="Login" TextChanged="UserLogin_TextChanged" Text="{Binding Login}"
+            <Entry Placeholder="{Binding LoginPlaceHolder}" TextChanged="UserLogin_TextChanged" Text="{Binding Login}" 
                    VerticalOptions="EndAndExpand" WidthRequest="250"
                 HorizontalOptions="CenterAndExpand" />
-            <Entry Placeholder="Password" IsPassword="true" TextChanged="UserLogin_TextChanged" Text="{Binding Password}"
+            <Entry Placeholder="{Binding PasswordPlaceHolder}" IsPassword="true" TextChanged="UserLogin_TextChanged" Text="{Binding Password}" 
                    VerticalOptions="StartAndExpand" WidthRequest="250"
                 HorizontalOptions="CenterAndExpand" />
-            <Button Text="Sign In"  Command="{Binding CheckSignIn}" x:Name="SignIn"
+            <Button Text="{Binding SigninButton}"  Command="{Binding CheckSignIn}" x:Name="SignIn" 
                     HorizontalOptions="CenterAndExpand" WidthRequest="250"
                     VerticalOptions="EndAndExpand"/>
             
             
             <Label HorizontalOptions="CenterAndExpand"
-                   VerticalOptions="StartAndExpand" LineBreakMode="WordWrap">
+                   VerticalOptions="StartAndExpand" LineBreakMode="WordWrap">   
                 <Label.FormattedText>
                     <FormattedString>
                         <Span 
-                            Text="SIGN UP" 
+                            Text="{Binding SignupButton}" 
                             TextColor="Blue"
                             TextDecorations="Underline" >
                             <Span.GestureRecognizers>

@@ -1,39 +1,50 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:prism="http://prismlibrary.com"
+             xmlns:prism="http://prismlibrary.com" xmlns:viewmodels="clr-namespace:Internship_project.ViewModel"
              prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="Internship_project.View.MainListView"
-             Title="{Binding Title}">
+             xmlns:android="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core"
+    Title="{Binding Title}">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem IconImageSource="ic_exit_to_app3x" Command="{Binding LogoutCommand}"/>
+        <ToolbarItem IconImageSource="ic_settings3x" Command="{Binding NavigationToSettings}"/>
+    </ContentPage.ToolbarItems>
 
     <AbsoluteLayout>
-            <ScrollView AbsoluteLayout.LayoutBounds = "0,0,1,1" AbsoluteLayout.LayoutFlags = "All">
-                <ListView
+        <ScrollView AbsoluteLayout.LayoutBounds = "0,0,1,1" AbsoluteLayout.LayoutFlags = "All">
+            <ListView
                   HasUnevenRows="True"
                   ItemsSource="{Binding ProfileList}"
+                  SelectedItem="{Binding SelectedProfile, Mode=TwoWay}"
                   IsGroupingEnabled="False">
-
-                    <ListView.ItemTemplate>
-                        <DataTemplate>
-                            <ViewCell>
-                                <Grid Padding="10">
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="100"/>
-                                    </Grid.RowDefinitions>
-                                    <Image Source="{Binding Path}" VerticalOptions="CenterAndExpand" />
-                                    <StackLayout Grid.Column="1" VerticalOptions="CenterAndExpand" HorizontalOptions="Start">
-                                        <Label Text="{Binding Name}"/>
-                                        <Label Text="{Binding NickName}"/>
-                                        <Label Text="{Binding Date}"/>
-                                    </StackLayout>
-                                    <Label Grid.Column="2" Text=""/>
-                                </Grid>
-                            </ViewCell>
-                        </DataTemplate>
-                    </ListView.ItemTemplate>
-                </ListView>
-            </ScrollView>
-        <ImageButton  CornerRadius="35" Source = "ic_add3x.png" BackgroundColor ="Blue" Command="{Binding NavigationCommand}"
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                         <ViewCell>
+                            <ViewCell.ContextActions>
+                                <MenuItem Clicked="OnEdit" CommandParameter="{Binding .}" Text="Edit"/>
+                                <MenuItem Clicked="OnDelete" CommandParameter="{Binding .}" Text="Delete" IsDestructive="True" />
+                            </ViewCell.ContextActions >
+                            <Grid Padding="10">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="100"/>
+                                </Grid.RowDefinitions>
+                                <Image Source="{Binding Path}" VerticalOptions="CenterAndExpand" />
+                                <StackLayout Grid.Column="1" VerticalOptions="CenterAndExpand" HorizontalOptions="Start">
+                                    <Label Text="{Binding Name}"/>
+                                    <Label Text="{Binding NickName}"/>
+                                    <Label Text="{Binding Date}"/>
+                                </StackLayout>
+                                <Label Grid.Column="2" Text=""/>
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </ScrollView>
+        
+        <ImageButton  CornerRadius="35" Source = "ic_add3x.png" BackgroundColor ="Blue" Command="{Binding NavigationToProfile}"
                      AbsoluteLayout.LayoutBounds=".95, .95, 70, 70" AbsoluteLayout.LayoutFlags="PositionProportional"/>
     </AbsoluteLayout>
 </ContentPage>

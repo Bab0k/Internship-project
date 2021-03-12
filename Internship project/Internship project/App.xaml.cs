@@ -10,7 +10,6 @@ using Internship_project.View;
 using Internship_project.ViewModel;
 using Internship_project.Services.Authorization;
 using Realms;
-using Realms.Schema;
 
 namespace Internship_project
 {
@@ -22,6 +21,10 @@ namespace Internship_project
 
         protected override void OnInitialized()
         {
+
+            Device.SetFlags(new string[] { "AppTheme_Experimental" });
+            Device.SetFlags(new string[] { "RadioButton_Experimental" });
+
             InitializeComponent();
 
 
@@ -48,7 +51,6 @@ namespace Internship_project
             containerRegistry.RegisterForNavigation<ProfileView, ProfileViewModel>();
             containerRegistry.RegisterForNavigation<MainListView, MainListViewModel>();
             containerRegistry.RegisterForNavigation<SettingsView, SettingsViewModel>();
-
         }
     }
 }
