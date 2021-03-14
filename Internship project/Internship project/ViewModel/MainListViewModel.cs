@@ -33,6 +33,18 @@ namespace Internship_project.ViewModel
             get => _SelectedProfile;
             set => SetProperty(ref _SelectedProfile, value);
         }
+        bool _IsVisibleImage = false;
+        public bool IsVisibleImage
+        {
+            get => _IsVisibleImage;
+            set => SetProperty(ref _IsVisibleImage, value);
+        }
+        string _SelectedImagePath;
+        public string SelectedImagePath
+        {
+            get => _SelectedImagePath;
+            set => SetProperty(ref _SelectedImagePath, value);
+        }
 
         public string UserId { get { return UserData.User.Id; } }
 
@@ -42,6 +54,7 @@ namespace Internship_project.ViewModel
             get => _Language;
             set => SetProperty(ref _Language, value);
         }
+
 
         string Edit { get; set; }
         string Delete { get; set; }
@@ -67,6 +80,16 @@ namespace Internship_project.ViewModel
         {
             UserData.User = null;
             NavigationService.NavigateAsync($"/{nameof(NavigationPage)}/{nameof(SignInView)}");
+        }
+
+        private void Tap()
+        {
+            SelectedImagePath = SelectedProfile.Path;
+            IsVisibleImage = true;
+        }
+        private void TapScrean()
+        {
+            IsVisibleImage = false;
         }
 
         public void EditItem(Profile profile)
@@ -105,5 +128,9 @@ namespace Internship_project.ViewModel
             new DelegateCommand(_NavigationToSettings);
         public DelegateCommand LogoutCommand =>
             new DelegateCommand(Logout);
+        public DelegateCommand TapCommand =>
+            new DelegateCommand(Tap);
+        public DelegateCommand TapScreanCommand =>
+            new DelegateCommand(TapScrean);
     }
 }

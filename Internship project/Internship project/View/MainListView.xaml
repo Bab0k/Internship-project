@@ -15,10 +15,11 @@
     <AbsoluteLayout>
         <ScrollView AbsoluteLayout.LayoutBounds = "0,0,1,1" AbsoluteLayout.LayoutFlags = "All">
             <ListView
-                  HasUnevenRows="True"
-                  ItemsSource="{Binding ProfileList}"
-                  SelectedItem="{Binding SelectedProfile, Mode=TwoWay}"
-                  IsGroupingEnabled="False">
+                HasUnevenRows="True"
+                ItemsSource="{Binding ProfileList}"
+                SelectedItem="{Binding SelectedProfile, Mode=TwoWay}"
+                ItemTapped="OnItemTapped"
+                IsGroupingEnabled="False">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
@@ -44,7 +45,23 @@
             </ListView>
         </ScrollView>
 
+
         <ImageButton  CornerRadius="35" Source = "ic_add3x.png" BackgroundColor ="Blue" Command="{Binding NavigationToProfile}"
                      AbsoluteLayout.LayoutBounds=".95, .95, 70, 70" AbsoluteLayout.LayoutFlags="PositionProportional"/>
+       
+        <Image BackgroundColor="#80808070" AbsoluteLayout.LayoutBounds="0,0,1,1"
+               AbsoluteLayout.LayoutFlags="SizeProportional" Margin="0,0,0,0" IsVisible="{Binding IsVisibleImage}">
+            <Image.GestureRecognizers>
+                <TapGestureRecognizer Command="{Binding TapScreanCommand}"/>
+            </Image.GestureRecognizers>
+        </Image>
+
+        <Image Source="{Binding SelectedImagePath}" AbsoluteLayout.LayoutBounds="40,40,1,1"
+               AbsoluteLayout.LayoutFlags="SizeProportional" Margin="0,0,80,80" IsVisible="{Binding IsVisibleImage}">
+            <Image.GestureRecognizers>
+                <TapGestureRecognizer Command="{Binding TapScreanCommand}"/>
+            </Image.GestureRecognizers>
+        </Image>
+        
     </AbsoluteLayout>
 </ContentPage>

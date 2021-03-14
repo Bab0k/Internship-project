@@ -26,5 +26,10 @@ namespace Internship_project.View
             var item = menu.CommandParameter as Profile;
             (BindingContext as MainListViewModel).DeleteItem(item);
         }
+
+        private void OnItemTapped(object sender, ItemTappedEventArgs e)
+        {
+            (BindingContext as MainListViewModel).TapCommand.Execute();
+        }
     }
 }
