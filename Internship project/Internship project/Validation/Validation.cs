@@ -31,8 +31,7 @@ namespace Internship_project.Validation
 
         public static bool IsValidation(string text, string pattern)
         {
-            var bll = Regex.IsMatch(text, pattern);
-            return bll;
+            return Regex.IsMatch(text, pattern);
         }
     }
 }

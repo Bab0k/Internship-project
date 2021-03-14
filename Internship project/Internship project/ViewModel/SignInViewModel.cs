@@ -3,12 +3,8 @@ using Internship_project.Model.Tables;
 using Internship_project.Model.UserData;
 using Internship_project.View;
 using Prism.Commands;
-using Prism.Mvvm;
 using Prism.Navigation;
 using Realms;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Linq;
 using Xamarin.Forms;
 
@@ -60,8 +56,6 @@ namespace Internship_project.ViewModel
         {
             return !string.IsNullOrEmpty(Login) && !string.IsNullOrEmpty(Password);
         }
-
-
 
         private void SignIn_Clicked()
         {

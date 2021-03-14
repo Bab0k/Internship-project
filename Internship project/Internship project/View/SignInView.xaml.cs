@@ -1,16 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Input;
+﻿using Internship_project.ViewModel;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-using Prism;
-using Prism.Navigation;
-using Realms;
-using Internship_project.ViewModel;
-using Internship_project.Model.Tables;
 
 namespace Internship_project.View
 {

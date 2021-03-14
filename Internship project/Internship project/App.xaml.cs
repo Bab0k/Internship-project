@@ -1,15 +1,11 @@
-﻿using Prism;
-using Prism.Unity;
-using Prism.Modularity;
-using System;
-using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
-using Prism.Ioc;
-using Prism.Navigation;
+﻿using Internship_project.Services.Authorization;
 using Internship_project.View;
 using Internship_project.ViewModel;
-using Internship_project.Services.Authorization;
+using Prism;
+using Prism.Ioc;
+using Prism.Unity;
 using Realms;
+using Xamarin.Forms;
 
 namespace Internship_project
 {

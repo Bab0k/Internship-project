@@ -3,16 +3,10 @@ using Internship_project.Model.Tables;
 using Internship_project.Model.UserData;
 using Internship_project.View;
 using Prism.Commands;
-using Prism.Mvvm;
 using Prism.Navigation;
 using Realms;
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.ComponentModel;
-using System.IO;
 using System.Linq;
-using System.Windows.Input;
 using Xamarin.Forms;
 
 namespace Internship_project.ViewModel
