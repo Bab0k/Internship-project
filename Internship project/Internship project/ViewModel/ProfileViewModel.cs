@@ -6,10 +6,6 @@ using Prism.Commands;
 using Prism.Navigation;
 using Realms;
 using System;
-using System.ComponentModel;
-using System.IO;
-using System.Linq;
-using Xamarin.Forms;
 
 namespace Internship_project.ViewModel
 {
@@ -81,7 +77,6 @@ namespace Internship_project.ViewModel
 
             if (file == null)
                 return;
-
 
             Path = file.Path;
         }

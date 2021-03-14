@@ -1,15 +1,11 @@
-﻿using Internship_project.Model.Tables;
+﻿using Internship_project.Model.Language;
+using Internship_project.Model.Tables;
+using Internship_project.Model.UserData;
 using Prism.Commands;
 using Prism.Navigation;
 using Realms;
-using System;
-using System.ComponentModel;
 using System.Linq;
-using Internship_project.Validation;
 using Xamarin.Forms;
-using Internship_project.View;
-using Internship_project.Model.UserData;
-using Internship_project.Model.Language;
 
 namespace Internship_project.ViewModel
 {
